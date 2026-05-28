@@ -1,0 +1,63 @@
+/**
+*
+*   Tomei a liberdade de aplicar a metodologia BEM(Bloco, Elemento e Modificador) no arquivo.
+*
+**/
+
+.cliente-form {
+  padding: 40px;
+  max-width: 550px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 8px;
+
+  // Elemento: Título
+  &__titulo {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  // Elemento: Campo de Input (largura total)
+  &__campo {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  // Elemento: Linha com dois campos lado a lado
+  &__input-flex {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  // Elemento: Campo que ocupa metade do espaço
+  &__campo-flex {
+    flex: 1;
+  }
+
+  // Elemento: Grupo de botões
+  &__acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  // Elemento: Botão de salvar
+  &__btn-salvar {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border-radius: 6px;
+    border: none;
+    padding: 12px 24px;
+
+    // Modificador: Estado Desabilitado usando o padrão BEM
+    &--desabilitado {
+      background-color: #e2e8f0 !important;
+      color: #94a3b8 !important;
+    }
+  }
+}
