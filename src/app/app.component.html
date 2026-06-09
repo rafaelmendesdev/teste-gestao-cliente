@@ -1,9 +1,1 @@
-<app-cliente-list *ngIf="telaExibicao === 'listaClientes'"
-(cliqueNovoCliente)="abrirFormularioCadastro()"
-(cliqueEditarCliente)="abrirFormularioEdicao($any($event))">
-</app-cliente-list>
-
-<app-cliente-form *ngIf="telaExibicao === 'formularioClientes'"
-[clienteId]="idSelecionado"
-(clienteSalvo)="voltarLista()">
-</app-cliente-form>
+<router-outlet></router-outlet>
