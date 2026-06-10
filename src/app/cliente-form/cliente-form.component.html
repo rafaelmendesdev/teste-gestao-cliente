@@ -43,11 +43,9 @@
       </mat-form-field>
     </div>
 
-    <div class="container-botoes">
+    <div class="cliente-form__acoes">
       <button mat-button type="button" (click)="cancelar()">Cancelar</button>
-      <button mat-raised-button 
-      [className]="formularioPrincipal.invalid ? 'cliente-form__btn-salvar cliente-form__btn-salvar--desabilitado' : 'cliente-form__btn-salvar'"
-      type="submit" [disabled]="formularioPrincipal.invalid">
+      <button mat-raised-button [className]="formularioPrincipal.invalid ? 'cliente-form__btn-salvar cliente-form__btn-salvar--desabilitado' : 'cliente-form__btn-salvar'" type="submit" [disabled]="formularioPrincipal.invalid">
         Salvar
       </button>
     </div>

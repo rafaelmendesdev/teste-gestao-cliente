@@ -1,24 +1,25 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-
-// import do MATERIAL
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClienteListComponent } from './cliente-list/cliente-list.component';
+import { LoginComponent } from './auth/login/login.component';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ClienteListComponent } from './cliente-list/cliente-list.component';
 import { CpfPipe } from './shared/pipes/cpf.pipe';
 import { TelefonePipe } from './shared/pipes/telefone.pipe';
-import { LoginComponent } from './auth/login/login.component';
-import { provideHttpClient, withInterceptors } from '@angular/common/http'
 
+// import do MATERIAL
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http'
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatToolbarModule,
+    MatIconModule,
     ReactiveFormsModule
   ],
   providers: [

@@ -1,15 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '@angular/material/prebuilt-themes/purple-green.css';
 
 body {
     margin: 0;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     background-color: #f4f6f9;
     color: #333333;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.mat-elevation-z8{
+.mat-elevation-z8 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
     border-radius: 8px;
     overflow: hidden;
+    background-color: #ffffff !important;
+
+    .mat-mdc-header-cell {
+        background-color: #f5f5f5 !important;
+        color: #333333 !important;
+        font-weight: bold;
+    }
+
+    .mat-mdc-cell {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+    }
+}
+
+.login-container {
+    background-color: #1e1e1e !important;
+}
+
+/*
+*
+* sobrescrever com tema escuro
+*
+*/
+body.dark-theme {
+    background-color: #303030 !important;
+    color: #ffffff !important;
+
+    // Ajuste total da tabela no modo Dark (Corrige o header branco com fonte branca)
+    .mat-elevation-z8 {
+        background-color: #424242 !important;
+
+        .mat-mdc-header-cell {
+            background-color: #2e2e2e !important; // Fundo grafite escuro no cabeçalho
+            color: #69f0ae !important; // Texto no verde do tema escuro para dar destaque!
+        }
+
+        .mat-mdc-cell {
+            background-color: #424242 !important;
+            color: #ffffff !important;
+        }
+    }
 }

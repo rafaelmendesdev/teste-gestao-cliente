@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClienteService } from '../cliente.service';
-import { Cliente } from '../cliente.model';
 
+import { Cliente } from '../cliente.model';
+import { ClienteService } from '../cliente.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cliente-form',
   templateUrl: './cliente-form.component.html',
@@ -12,12 +13,9 @@ import { Cliente } from '../cliente.model';
 export class ClienteFormComponent {
   // formulário se prepara para EDITAR ou CRIAR
   @Input() clienteId: number | null = null;
-
-  // evento para salvar e voltar a lista
-  @Output() clienteSalvo = new EventEmitter<void>();
   formularioPrincipal!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private clienteService: ClienteService) { }
+  constructor(private formBuilder: FormBuilder, private clienteService: ClienteService, private router: Router) { }
 
   ngOnInit(): void {
     // criacão formulario reativo + validações
@@ -26,13 +24,13 @@ export class ClienteFormComponent {
       nome: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       telefone: ['', [Validators.required]],
-      cpf_cnpj:['',[Validators.required]]
+      cpf_cnpj: ['', [Validators.required]]
     });
 
     // edição, buscar/carregar dados dos clientes
     if (this.clienteId) {
       const clienteCadastrado = this.clienteService.getClienteById(this.clienteId);
-      
+
       if (clienteCadastrado) {
         this.formularioPrincipal.patchValue(clienteCadastrado);
       }
@@ -41,7 +39,7 @@ export class ClienteFormComponent {
 
   salvar(): void {
     // validação para formulario preenchido
-    if (this.formularioPrincipal.invalid){
+    if (this.formularioPrincipal.invalid) {
       return;
     }
     const dadosCliente: Cliente = this.formularioPrincipal.value;
@@ -55,12 +53,12 @@ export class ClienteFormComponent {
     }
 
     // cliente cadastrado, fechar formulario
-    this.clienteSalvo.emit();
+    this.router.navigate(['/clientes']);
   }
 
   cancelar(): void {
     // sem cadastro, fechar formulario
-    this.clienteSalvo.emit();
+    this.router.navigate(['/clientes']);
   }
 
   formatarCpfAoDigitar(event: any): void {
@@ -70,7 +68,7 @@ export class ClienteFormComponent {
     if (valor.length > 14) {
       valor = valor.slice(0, 14);
     }
-    
+
     // Aplica a máscara dinamicamente baseado no tamanho do que foi digitado
     if (valor.length <= 11) {
       // Máscara de CPF: 000.000.000-00
